@@ -1,0 +1,82 @@
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\bin\Debug\QboImporterTool.exe.config
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\bin\Debug\QboImporterTool.exe
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\bin\Debug\QboImporterTool.pdb
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\bin\Debug\DLI.Core.Common.dll
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\bin\Debug\Excel.dll
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\bin\Debug\Newtonsoft.Json.dll
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\bin\Debug\RestSharp.dll
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\bin\Debug\DLI.Infrastructure.Domain.dll
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\bin\Debug\StructureMap.dll
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\bin\Debug\AI.TextFileImporting.dll
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\bin\Debug\FluentNHibernate.dll
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\bin\Debug\AI.nRepo.dll
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\bin\Debug\AI.TextFileParsing.dll
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\bin\Debug\NHibernate.dll
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\bin\Debug\DLI.Infrastructure.Data.dll
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\bin\Debug\StructureMap.Net4.dll
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\bin\Debug\AI.Dynamics.dll
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\bin\Debug\AI.TextFileParsing.Interfaces.dll
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\bin\Debug\AI.System.Extensions.dll
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\bin\Debug\Iesi.Collections.dll
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\bin\Debug\DLI.Core.Common.pdb
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\bin\Debug\Excel.pdb
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\bin\Debug\Newtonsoft.Json.xml
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\bin\Debug\RestSharp.xml
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\bin\Debug\DLI.Infrastructure.Domain.pdb
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\bin\Debug\StructureMap.pdb
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\bin\Debug\StructureMap.xml
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\bin\Debug\AI.TextFileImporting.pdb
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\bin\Debug\FluentNHibernate.xml
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\bin\Debug\AI.TextFileParsing.pdb
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\bin\Debug\NHibernate.xml
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\bin\Debug\DLI.Infrastructure.Data.pdb
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\bin\Debug\StructureMap.Net4.pdb
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\bin\Debug\AI.Dynamics.pdb
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\bin\Debug\AI.TextFileParsing.Interfaces.pdb
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\bin\Debug\AI.System.Extensions.pdb
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\bin\Debug\Iesi.Collections.xml
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\obj\Debug\QboImporterTool.exe
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\obj\Debug\QboImporterTool.pdb
+C:\AI Projects\QBO Importer Tool\ExcelToQBOCustomer\ExcelToQBOCustomer\obj\Debug\QboImporterTool.csprojResolveAssemblyReference.cache
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\bin\Debug\QboImporterTool.exe.config
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\obj\Debug\QboImporterTool.exe
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\obj\Debug\QboImporterTool.pdb
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\bin\Debug\QboImporterTool.exe
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\bin\Debug\QboImporterTool.pdb
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\bin\Debug\DLI.Core.Common.dll
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\bin\Debug\Excel.dll
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\bin\Debug\Newtonsoft.Json.dll
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\bin\Debug\RestSharp.dll
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\bin\Debug\DLI.Infrastructure.Domain.dll
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\bin\Debug\StructureMap.dll
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\bin\Debug\AI.TextFileImporting.dll
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\bin\Debug\FluentNHibernate.dll
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\bin\Debug\AI.nRepo.dll
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\bin\Debug\AI.TextFileParsing.dll
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\bin\Debug\NHibernate.dll
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\bin\Debug\DLI.Infrastructure.Data.dll
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\bin\Debug\StructureMap.Net4.dll
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\bin\Debug\AI.Dynamics.dll
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\bin\Debug\AI.TextFileParsing.Interfaces.dll
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\bin\Debug\AI.System.Extensions.dll
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\bin\Debug\Iesi.Collections.dll
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\bin\Debug\DLI.Core.Common.pdb
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\bin\Debug\Excel.pdb
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\bin\Debug\Newtonsoft.Json.xml
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\bin\Debug\RestSharp.xml
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\bin\Debug\DLI.Infrastructure.Domain.pdb
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\bin\Debug\StructureMap.pdb
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\bin\Debug\StructureMap.xml
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\bin\Debug\AI.TextFileImporting.pdb
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\bin\Debug\FluentNHibernate.xml
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\bin\Debug\AI.TextFileParsing.pdb
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\bin\Debug\NHibernate.xml
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\bin\Debug\DLI.Infrastructure.Data.pdb
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\bin\Debug\StructureMap.Net4.pdb
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\bin\Debug\AI.Dynamics.pdb
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\bin\Debug\AI.TextFileParsing.Interfaces.pdb
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\bin\Debug\AI.System.Extensions.pdb
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\bin\Debug\Iesi.Collections.xml
+C:\AI Projects\QBO Importer Tool\QBO Importer Tool\QboImporterTool\obj\Debug\QboImporterTool.csprojResolveAssemblyReference.cache
