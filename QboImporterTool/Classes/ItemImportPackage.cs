@@ -9,6 +9,7 @@ using DLI.Core.Common.Requests.QuickBooksOnline;
 using DLI.Core.Common.Responses.QuickBooksOnline;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using QboImporterTool.Classes.Bases;
 using QboImporterTool.Mapper;
 using RestSharp;
 

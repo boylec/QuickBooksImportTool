@@ -16,14 +16,14 @@ namespace QboImporterTool.Classes
     {
         public InvoiceImportPackage(string invoiceFile, string invoiceDetailsFile) : base(invoiceFile, invoiceDetailsFile, new InvoiceMapper(), ImportableTypes.Invoice)
         {
-            FilePath = invoiceFile;
-            RawDataSet = Utils.GetRowsFromExcelFile(invoiceFile);
-            Mapper = new InvoiceMapper();
-            PayLoad = new List<QbOnlineBatchItemRequest>();
-            TypeOfImport = typeof (SaveQuickBooksOnlineInvoiceRequest);
-            ItemChoiceType = ItemChoiceType6.Invoice;
-            ImportType = ImportableTypes.Invoice;
-            DetailDataSet = Utils.GetRowsFromExcelFile(invoiceDetailsFile);
+            //FilePath = invoiceFile;
+            //RawDataSet = Utils.GetRowsFromExcelFile(invoiceFile);
+            //Mapper = new InvoiceMapper();
+            //PayLoad = new List<QbOnlineBatchItemRequest>();
+            //TypeOfImport = typeof (SaveQuickBooksOnlineInvoiceRequest);
+            //ItemChoiceType = ItemChoiceType6.Invoice;
+            //ImportType = ImportableTypes.Invoice;
+            //DetailDataSet = Utils.GetRowsFromExcelFile(invoiceDetailsFile);
         }
     }
 

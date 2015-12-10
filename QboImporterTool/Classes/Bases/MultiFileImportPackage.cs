@@ -34,7 +34,7 @@ namespace QboImporterTool.Classes.Bases
         public override void ExtractRequestsFromRows()
         {
             var totalInvoices = RawDataSet.Count;
-            Console.WriteLine("Extracting requests from " + RawDataSet.Count + "rows for {0} entities.", ImportType.ToString());
+            Console.WriteLine("Extracting requests from " + RawDataSet.Count + " rows for {0} entities.", ImportType.ToString());
             Console.WriteLine("With a total " + DetailDataSet.Count + " detail items to package.");
             for (var x = 0; x < RawDataSet.Count; x++)
             {

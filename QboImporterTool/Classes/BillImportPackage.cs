@@ -20,25 +20,22 @@ namespace QboImporterTool.Classes
     internal class BillImportPackage :
         MultiFileImportPackage<SaveQuickBooksOnlineBillRequest, QuickBooksOnlineBillResponse>
     {
-        //protected List<BillImportPackage> BillImports { get; set; }
-        protected new BillMapper Mapper;
-
         public BillImportPackage(string billFile, string billDetailsFile) : base(billFile, billDetailsFile, new BillMapper(), ImportableTypes.Bill)
         {
-            FilePath = billFile;
-            RawDataSet = Utils.GetRowsFromExcelFile(billFile);
-            Mapper = new BillMapper();
-            PayLoad = new List<QbOnlineBatchItemRequest>();
-            TypeOfImport = typeof (SaveQuickBooksOnlineBillRequest);
-            ItemChoiceType = ItemChoiceType6.Bill;
-            ImportType = ImportableTypes.Bill;
-            DetailDataSet = Utils.GetRowsFromExcelFile(billDetailsFile);
+            //FilePath = billFile;
+            //RawDataSet = Utils.GetRowsFromExcelFile(billFile);
+            //Mapper = new BillMapper();
+            //PayLoad = new List<QbOnlineBatchItemRequest>();
+            //TypeOfImport = typeof (SaveQuickBooksOnlineBillRequest);
+            //ItemChoiceType = ItemChoiceType6.Bill;
+            //ImportType = ImportableTypes.Bill;
+            //DetailDataSet = Utils.GetRowsFromExcelFile(billDetailsFile);
         }
 
         public override void ExtractRequestsFromRows()
         {
             var totalInvoices = RawDataSet.Count;
-            Console.WriteLine("Extracting requests from " + RawDataSet.Count + "rows for {0} entities.", ImportType.ToString());
+            Console.WriteLine("Extracting requests from " + RawDataSet.Count + " rows for {0} entities.", ImportType.ToString());
             Console.WriteLine("With a total " + DetailDataSet.Count + " detail items to package.");
             var vendorName = "";
             for (var x = 0; x < RawDataSet.Count; x++)
@@ -131,8 +128,13 @@ namespace QboImporterTool.Classes
         /// <returns></returns>
         public bool IsParentRowValid(DataRow row)
         {
-            var separatorColumnValue = row["Seperator"].ToString();
-            return !separatorColumnValue.StartsWith("Total");
+            var separatorColumnValue = !(row["Seperator"] is DBNull) ? row["Seperator"].ToString() : null;
+
+            //This basically says if the row starts with Total return false, if the seperator row has nothing there, but there is
+            //an open balance (ie the last line of the report) then go ahead and return false as well.
+            //Otherwise we are returning true that the row is valid.
+            return  (separatorColumnValue == null || !separatorColumnValue.StartsWith("Total")) &&
+                    (separatorColumnValue != null || row["Open Balance"] is DBNull);
         }
 
         public SaveQuickBooksOnlineBillRequest AddMappings(

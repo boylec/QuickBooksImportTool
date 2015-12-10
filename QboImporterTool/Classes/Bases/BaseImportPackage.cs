@@ -2,17 +2,15 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using DLI.Core.Common.Enums.QuickBooksOnline;
 using DLI.Core.Common.Requests.QuickBooksOnline;
 using DLI.Core.Common.Responses.QuickBooksOnline;
-using ICSharpCode.SharpZipLib.Zip;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using QboImporterTool.Mapper;
 using RestSharp;
 
-namespace QboImporterTool.Classes
+namespace QboImporterTool.Classes.Bases
 {
     internal interface IImporter
     {

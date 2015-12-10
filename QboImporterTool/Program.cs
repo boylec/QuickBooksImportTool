@@ -20,6 +20,7 @@ using QboImporterTool.Mapper;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using QboImporterTool.Classes;
+using QboImporterTool.Classes.Bases;
 using RestSharp;
 using RestSharp.Deserializers;
 using RestSharp.Extensions;

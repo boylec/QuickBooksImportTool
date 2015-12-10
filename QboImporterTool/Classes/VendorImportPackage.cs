@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using DLI.Core.Common.Enums.QuickBooksOnline;
 using DLI.Core.Common.Requests.QuickBooksOnline;
 using DLI.Core.Common.Responses.QuickBooksOnline;
+using QboImporterTool.Classes.Bases;
 using QboImporterTool.Mapper;
 
 namespace QboImporterTool.Classes
