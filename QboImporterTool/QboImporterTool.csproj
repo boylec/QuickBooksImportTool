@@ -70,6 +70,7 @@
     <Compile Include="Classes\VendorImportPackage.cs" />
     <Compile Include="Classes\CustomerImportPackage.cs" />
     <Compile Include="Classes\Bases\BaseImportPackage.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="Mapper\IMultiFileMapAdder.cs" />
     <Compile Include="Mapper\ISingleFileMapAdder.cs" />
     <Compile Include="Mapper\IParentChildMapper.cs" />

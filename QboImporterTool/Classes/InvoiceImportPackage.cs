@@ -154,6 +154,11 @@ namespace QboImporterTool.Classes
                     y++;
                 }
             }
+            if (parentItem.DetailRows.Count == 0)
+            {
+                Logger.Instance.Log("Could not find correlating detail rows for Invoice with \r\n "
+                                    + "Number: " + invoiceNumber + "\r\n ");
+            }
             return parentItem.DetailRows;
         }
     }

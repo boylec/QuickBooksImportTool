@@ -26,6 +26,7 @@ namespace QboImporterTool.Classes
 
         public ItemImportPackage(string fileName)
         {
+            Logger.Instance.Log("Began import package for Item");
             FilePath = fileName;
             RawDataSet = Utils.GetRowsFromExcelFile(fileName);
             PayLoad = new List<QbOnlineBatchItemRequest>();

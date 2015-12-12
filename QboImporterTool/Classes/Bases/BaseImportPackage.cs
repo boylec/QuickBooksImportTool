@@ -38,6 +38,7 @@ namespace QboImporterTool.Classes.Bases
 
         protected internal BaseImportPackage(string filePath, IRowToRequestMapper<TRequestType, TResponseType> mapper, ImportableTypes importType)
         {
+            Logger.Instance.Log("Began import package for " + importType);
             FilePath = filePath;
             RawDataSet = Utils.GetRowsFromExcelFile(filePath);
             Mapper = mapper;

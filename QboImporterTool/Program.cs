@@ -35,7 +35,8 @@ namespace QboImporterTool
         Employee,
         Item,
         Invoice,
-        Bill
+        Bill,
+        BillPayment
     }
 
     public enum RefreshableTypes
@@ -48,7 +49,8 @@ namespace QboImporterTool
         Item,
         Invoice,
         Preferences,
-        Bill
+        Bill,
+        BillPayment
     }
     class Program
     {
@@ -62,7 +64,8 @@ namespace QboImporterTool
         internal static List<QuickBooksOnlineItemResponse> CurrentItems = new List<QuickBooksOnlineItemResponse>();
         internal static List<QuickBooksOnlineInvoiceResponse> CurrentInvoices = new List<QuickBooksOnlineInvoiceResponse>();
         internal static List<QuickBooksOnlinePreferencesResponse> CurrentPreferences = new List<QuickBooksOnlinePreferencesResponse>();
-        internal static List<QuickBooksOnlineBillResponse> CurrentBills = new List<QuickBooksOnlineBillResponse>(); 
+        internal static List<QuickBooksOnlineBillResponse> CurrentBills = new List<QuickBooksOnlineBillResponse>();
+        internal static List<QuickBooksOnlineBillPaymentResponse> CurrentBillPayments = new List<QuickBooksOnlineBillPaymentResponse>(); 
 
         private static void RefreshQboData()
         {
@@ -76,9 +79,11 @@ namespace QboImporterTool
             CurrentInvoices = Utils.GetAllEntities<QuickBooksOnlineInvoiceResponse>("Invoice");
             CurrentPreferences = Utils.GetAllEntities<QuickBooksOnlinePreferencesResponse>("Preferences");
             CurrentBills = Utils.GetAllEntities<QuickBooksOnlineBillResponse>("Bill");
+            CurrentBillPayments = Utils.GetAllEntities<QuickBooksOnlineBillPaymentResponse>("BillPayment");
         }
         private static void Main(string[] args)
         {
+            Logger.Instance.Log("Program Began");
             Console.SetWindowSize(170,45);
             var importerList = new List<IImporter>()
             {
@@ -88,7 +93,8 @@ namespace QboImporterTool
                 new EmployeeImportPackage("employees.xlsx"),
                 new ItemImportPackage("items.xlsx"),
                 new InvoiceImportPackage("invoices.xlsx", "transactiondetails.xlsx"),
-                new BillImportPackage("bills.xlsx","transactiondetails.xlsx")
+                new BillImportPackage("bills.xlsx","transactiondetails.xlsx"),
+                new BillPaymentImportPackage("bills.xlsx","transactiondetails.xlsx")
             };
 
 
