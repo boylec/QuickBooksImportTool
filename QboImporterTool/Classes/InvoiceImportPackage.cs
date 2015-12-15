@@ -12,18 +12,10 @@ using QboImporterTool.Mapper;
 namespace QboImporterTool.Classes
 {
     internal class InvoiceImportPackage :
-        MultiFileImportPackage<SaveQuickBooksOnlineInvoiceRequest, QuickBooksOnlineInvoiceResponse>
+        SplitLinesImportPackage<SaveQuickBooksOnlineInvoiceRequest, QuickBooksOnlineInvoiceResponse>
     {
-        public InvoiceImportPackage(string invoiceFile, string invoiceDetailsFile) : base(invoiceFile, invoiceDetailsFile, new InvoiceMapper(), ImportableTypes.Invoice)
+        public InvoiceImportPackage(string invoiceFile) : base(invoiceFile, new InvoiceMapper(), ImportableTypes.Invoice)
         {
-            //FilePath = invoiceFile;
-            //RawDataSet = Utils.GetRowsFromExcelFile(invoiceFile);
-            //Mapper = new InvoiceMapper();
-            //PayLoad = new List<QbOnlineBatchItemRequest>();
-            //TypeOfImport = typeof (SaveQuickBooksOnlineInvoiceRequest);
-            //ItemChoiceType = ItemChoiceType6.Invoice;
-            //ImportType = ImportableTypes.Invoice;
-            //DetailDataSet = Utils.GetRowsFromExcelFile(invoiceDetailsFile);
         }
     }
 
@@ -51,14 +43,15 @@ namespace QboImporterTool.Classes
                 var convertedItem = new QbOnlineInvoiceLineItem
                 {
                     IsSubTotalLine = false,
-                    ItemId = productOrService.EntityId
+                    ItemId = productOrService.EntityId,
+                    LineDescription = productOrService.Description
                 };
 
                 //Need to know if this is a discount item because if it we do the pricing differently. (Qty would be the total number of dollars of the invoice lines
                 //that are not discounts. So we do the discount lines after we do the non discount lines. Because we need the non discount lines sum to 
                 //know how many dollars will be discounted
-                var isDiscount = productOrService.IncomeAccountName == "Discounts";
-                var isService = productOrService.IncomeAccountName == "Services";
+                var isDiscount = productOrService.Description != null && productOrService.Description.StartsWith("Discount", StringComparison.CurrentCultureIgnoreCase);
+                var isService = !isDiscount && productOrService.IncomeAccountName == "Services";
 
                 if (isDiscount)
                 {
@@ -112,7 +105,7 @@ namespace QboImporterTool.Classes
 
         public bool IsParentRowValid(DataRow row)
         {
-            return (row["Seperator"] is DBNull) && row["Type"].ToString() == "Invoice";
+            return (!(row["Type"] is DBNull) && row["Type"].ToString() == "Invoice") && row["Account"].ToString() == "Accounts Receivable";
         }
 
         public SaveQuickBooksOnlineInvoiceRequest AddMappings(
@@ -123,7 +116,7 @@ namespace QboImporterTool.Classes
                 Program.CurrentCustomers.Find(
                     x => x.DisplayName.Equals(customerName, StringComparison.CurrentCultureIgnoreCase)).EntityId;
             baseRequest.InvoiceNumber = invoiceItem.ParentRow["Num"].ToString();
-            baseRequest.SalesTermId = Program.CurrentTerms.Find(x => x.Name == "Net 30").EntityId;
+            baseRequest.SalesTermId = Program.CurrentTerms.Find(x => x.TermName == invoiceItem.ParentRow["Terms"].ToString()).EntityId;
             baseRequest.LineItems = MapLineItems(invoiceItem.DetailRows);
             baseRequest.CreatedDate = DateTime.Parse(invoiceItem.ParentRow["Date"].ToString());
             baseRequest.DueDate = DateTime.Parse(invoiceItem.ParentRow["Due Date"].ToString());
@@ -160,6 +153,15 @@ namespace QboImporterTool.Classes
                                     + "Number: " + invoiceNumber + "\r\n ");
             }
             return parentItem.DetailRows;
+        }
+
+        /// <summary>
+        /// For an invoice the detail row will basically always be a different account than the account
+        /// on the parent row. (The account on the parent row should always be Accounts Receivable)
+        /// </summary> 
+        public bool IsDetailRowValid(DataRow detailRow, DataRow parentRowForDetail)
+        {
+            return detailRow["Account"].ToString() != parentRowForDetail["Account"].ToString() && !(detailRow["Type"] is DBNull) && detailRow["Type"].ToString() == "Invoice";
         }
     }
 }

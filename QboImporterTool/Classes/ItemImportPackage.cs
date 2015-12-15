@@ -221,7 +221,7 @@ namespace QboImporterTool.Classes
             var preferredVendorName = row["Preferred Vendor"].ToString();
             var itemPrice = row["Price"] is DBNull ? 0 : Convert.ToDecimal(row["Price"].ToString());
             request.Description = row["Description"].ToString();
-            var isDiscountItem = (request.Description!= null && request.Description.StartsWith("Discount", StringComparison.CurrentCultureIgnoreCase));
+            //var isDiscountItem = (request.Description!= null && request.Description.StartsWith("Discount", StringComparison.CurrentCultureIgnoreCase));
             request.ItemCategoryType = ItemCategoryType.Service;
             request.ItemType = ItemType.Service;
             request.Name = itemInfo.ItemName;
@@ -231,11 +231,14 @@ namespace QboImporterTool.Classes
                 request.ParentItemName = itemInfo.ParentItemName;
             }
             request.Price = itemPrice;
-            request.IncomeAccountRefId = isDiscountItem
-                ? Program.CurrentAccounts.Find(x => x.FullyQualifiedName == "Discounts").EntityId
-                : Program.CurrentAccounts.Find(x => x.FullyQualifiedName == "Services").EntityId;
+            request.IncomeAccountRefId = //isDiscountItem
+                //? Program.CurrentAccounts.Find(x => x.FullyQualifiedName == "Discounts").EntityId :
+                Program.CurrentAccounts.Find(x => x.Name == row["Account"].ToString()).EntityId;
             request.UseIncomeAccount = true;
-            request.UseExpenseAccount = false;
+            request.ExpenseAccountRefId = !(row["COGS Account"] is DBNull)
+                ? Program.CurrentAccounts.Find(x => x.Name == row["COGS Account"].ToString()).EntityId
+                : null;
+            request.UseExpenseAccount = request.ExpenseAccountRefId != null;
             request.SubLevel = itemNameString.Count(x => x == ':') + 1;
             if(!string.IsNullOrEmpty(preferredVendorName))
                 request.PreferredVendorId = Program.CurrentVendors.Find(x => x.DisplayName == preferredVendorName).EntityId;

@@ -24,11 +24,16 @@ namespace QboImporterTool.Classes
 
     internal class VendorMapper : IRowToRequestMapper<SaveQuickBooksOnlineVendorRequest, QuickBooksOnlineVendorResponse>
     {
-
+        /// <summary>
+        /// Sets the request based on the information in the row.
+        /// </summary>
+        /// <param name="row">The row containing information for the entity request</param>
+        /// <param name="vendorRequest">The request itself</param>
+        /// <returns>The request filled in with information from the row</returns>
         public SaveQuickBooksOnlineVendorRequest AddMappingsToBaseRequest(DataRow row,
             SaveQuickBooksOnlineVendorRequest vendorRequest)
         {
-            vendorRequest.Active = row["Active Status"].ToString() == "Active";
+            //vendorRequest.Active = row["Active Status"].ToString() == "Active";
             vendorRequest.DisplayName = row["Vendor"].ToString();
             vendorRequest.OpeningBalance = 0;//Convert.ToDecimal(row["Balance"]);
             vendorRequest.OpeningBalanceDate = null;//DateTime.Now;

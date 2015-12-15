@@ -50,6 +50,10 @@ namespace QboImporterTool.Classes
             for (var x = 0; x < RawDataSet.Count; x++)
             {
                 var row = RawDataSet[x];
+
+                if (row["Type"].ToString() == "Non-Posting")
+                    continue;
+
                 var requestEntity = GetBaseRequestFromRow(row, Mapper);
 
                 PayLoad.Add(new QbOnlineBatchItemRequest()
@@ -259,7 +263,7 @@ namespace QboImporterTool.Classes
             accountRequest.OpeningBalanceDate = DateTime.Now;
             accountRequest.OpeningBalance = row["Balance Total"] is DBNull ? 0 : Convert.ToDecimal(row["Balance Total"]);
             accountRequest.Description = row["Description"].ToString();
-            accountRequest.AccountType = (AccountType) Enum.Parse(typeof (AccountType), row["Type"].ToString().Replace(" ", ""));
+            accountRequest.AccountType = (AccountType) Enum.Parse(typeof (AccountType), row["Type"].ToString().Replace(" ", "").Replace("-",""));
             accountRequest.SubLevel = accountNameString.Count(x => x == ':') + 1;
             accountRequest.IsLastAccountInHierarchy = accountInfo.IsLastInAccountHierarchy; //We will only be importing balances for the last accounts in sub account hierarchy. which
                                                                                             //will automatically update the account balance for their parent accounts.

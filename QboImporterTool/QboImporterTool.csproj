@@ -62,8 +62,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\AccountImportPackage.cs" />
+    <Compile Include="Classes\Bases\SplitLinesImportPackage.cs" />
     <Compile Include="Classes\Bases\MultiFileImportPackage.cs" />
+    <Compile Include="Classes\BillPaymentImportPackage.cs" />
     <Compile Include="Classes\BillImportPackage.cs" />
+    <Compile Include="Classes\TermImportPackage.cs" />
     <Compile Include="Classes\InvoiceImportPackage.cs" />
     <Compile Include="Classes\ItemImportPackage.cs" />
     <Compile Include="Classes\EmployeeImportPackage.cs" />

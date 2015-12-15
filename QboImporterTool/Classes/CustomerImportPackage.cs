@@ -46,7 +46,7 @@ namespace QboImporterTool.Classes
             request.TelephoneNumber = mainPhone;
             request.OpeningBalance = 0;//Convert.ToDecimal(row["Balance Total"]);
             request.OpeningBalanceDate = null;//DateTime.Now;
-            request.TermId = Program.CurrentTerms.Find(x => x.Name == "Net 30").EntityId;
+            request.TermId = Program.CurrentTerms.Find(x => x.TermName == "Net 30").EntityId;
             return request;
         }
 

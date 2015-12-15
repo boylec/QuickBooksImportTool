@@ -36,7 +36,7 @@ namespace QboImporterTool
         Item,
         Invoice,
         Bill,
-        BillPayment
+        Term
     }
 
     public enum RefreshableTypes
@@ -45,12 +45,11 @@ namespace QboImporterTool
         Vendor,
         Account,
         Employee,
-        Terms,
+        Term,
         Item,
         Invoice,
         Preferences,
-        Bill,
-        BillPayment
+        Bill
     }
     class Program
     {
@@ -79,7 +78,6 @@ namespace QboImporterTool
             CurrentInvoices = Utils.GetAllEntities<QuickBooksOnlineInvoiceResponse>("Invoice");
             CurrentPreferences = Utils.GetAllEntities<QuickBooksOnlinePreferencesResponse>("Preferences");
             CurrentBills = Utils.GetAllEntities<QuickBooksOnlineBillResponse>("Bill");
-            CurrentBillPayments = Utils.GetAllEntities<QuickBooksOnlineBillPaymentResponse>("BillPayment");
         }
         private static void Main(string[] args)
         {
@@ -87,14 +85,14 @@ namespace QboImporterTool
             Console.SetWindowSize(170,45);
             var importerList = new List<IImporter>()
             {
-                new CustomerImportPackage("customers.xls"),
+                new CustomerImportPackage("customers.xlsx"),
                 new VendorImportPackage("vendors.xlsx"),
                 new AccountImportPackage("accounts.xlsx"),
                 new EmployeeImportPackage("employees.xlsx"),
                 new ItemImportPackage("items.xlsx"),
-                new InvoiceImportPackage("invoices.xlsx", "transactiondetails.xlsx"),
-                new BillImportPackage("bills.xlsx","transactiondetails.xlsx"),
-                new BillPaymentImportPackage("bills.xlsx","transactiondetails.xlsx")
+                new InvoiceImportPackage("invoices.xlsx"),
+                new BillImportPackage("bills.xlsx"),
+                new TermImportPackage("terms.xlsx")
             };
 
 
