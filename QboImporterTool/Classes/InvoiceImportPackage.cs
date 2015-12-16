@@ -44,7 +44,8 @@ namespace QboImporterTool.Classes
                 {
                     IsSubTotalLine = false,
                     ItemId = productOrService.EntityId,
-                    LineDescription = productOrService.Description
+                    LineDescription = productOrService.Description,
+                    RateOrPrice = productOrService.UnitPrice
                 };
 
                 //Need to know if this is a discount item because if it we do the pricing differently. (Qty would be the total number of dollars of the invoice lines
@@ -55,6 +56,7 @@ namespace QboImporterTool.Classes
 
                 if (isDiscount)
                 {
+                    convertedItem.IsDiscount = true;
                     //Add this line to process after this loop based on the lines that are processed in this next branch.
                     discountLines.Add(convertedItem);
                 }
@@ -82,6 +84,7 @@ namespace QboImporterTool.Classes
                 //for example the Item 4:DBM might discount -0.8%. So it will calculate 0.8% of all the service line items, and that will be entered 
                 //automatically into the amount field of this discount line. (Theoretically)
                 discountLine.Qty = numberOfDollarsToBeDiscounted;
+                discountLine.Amount = numberOfDollarsToBeDiscounted*discountLine.RateOrPrice;
             }
 
             //Now that the discount lines have been mapped/parsed they can be appended to the end
@@ -100,7 +103,7 @@ namespace QboImporterTool.Classes
         public QuickBooksOnlineInvoiceResponse CheckEntityExistsInQbo(MultiFileImportDataSet dataSet)
         {
             var invoiceDocNumber = dataSet.ParentRow["Num"].ToString();
-            return Program.CurrentInvoices.Find(x => x.DocNumber == invoiceDocNumber.ToString());
+            return Program.CurrentInvoices.Find(x => x.DocNumber.ToString().Equals(invoiceDocNumber.ToString(),StringComparison.CurrentCultureIgnoreCase));
         }
 
         public bool IsParentRowValid(DataRow row)
@@ -121,9 +124,14 @@ namespace QboImporterTool.Classes
             baseRequest.CreatedDate = DateTime.Parse(invoiceItem.ParentRow["Date"].ToString());
             baseRequest.DueDate = DateTime.Parse(invoiceItem.ParentRow["Due Date"].ToString());
             baseRequest.PurchaseOrderNumber = invoiceItem.ParentRow["P. O. #"].ToString();
-            baseRequest.CustomFieldIdForPurchaseOrder =
-                Program.CurrentPreferences[0].SalesFormCustomFields.Find(
-                    (x => x.ValueType == CustomFieldValueType.StringType && (string) x.Value == "PO Number")).Id;
+            var quickBooksOnlinePreferencesResponse = 
+                Program.CurrentPreferences
+                .Select(y => y.SalesFormCustomFields
+                    .FirstOrDefault(x => x.ValueType == CustomFieldValueType.StringType && (string) x.Value == "PO Number")).FirstOrDefault();
+            if (quickBooksOnlinePreferencesResponse != null)
+                baseRequest.CustomFieldIdForPurchaseOrder =
+                    quickBooksOnlinePreferencesResponse.Id;
+
             return baseRequest;
         }
 

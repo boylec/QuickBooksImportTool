@@ -97,13 +97,17 @@ namespace QboImporterTool.Classes.Bases
         public virtual void SendPayloadToQbo()
         {
             var batchPortions = new List<List<QbOnlineBatchItemRequest>>();
-            for (var x = 0; x < PayLoad.Count; x++)
+            for (var x = 0; x < PayLoad.Count;)
             {
-                var divideByAmount = PayLoad.Count > 160 ? 180 : 4;
+                var divideByAmount = PayLoad.Count >= 50 ? (int)Math.Ceiling((((double)PayLoad.Count) * 2)/25) : 1;
+                
+                while (divideByAmount > 50)
+                    divideByAmount /= 2;
+
                 var portion = new List<QbOnlineBatchItemRequest>();
-                for (var y = 0; y < PayLoad.Count / divideByAmount; y++)
+                for (var y = 0; y < divideByAmount; y++)
                 {
-                    if (x <= PayLoad.Count - 1)
+                    if (x < PayLoad.Count)
                     {
                         portion.Add(PayLoad[x]);
                         x++;
@@ -144,7 +148,7 @@ namespace QboImporterTool.Classes.Bases
                 estimatedSecondsRemaining = (timeOfLastPortion) * (batchPortions.Count - portionsCompleted) / 1000M;
                 timeOfLastPortion = 0;
             }
-            Console.Write("\rPercentage Complete: 100%");
+            Console.Write("\r\rPercentage Complete: 100%");
 
             Console.WriteLine();
             Console.WriteLine(@"Import operation(s) completed for {0}s...", ImportType.ToString());

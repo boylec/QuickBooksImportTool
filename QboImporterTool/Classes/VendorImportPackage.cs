@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -18,8 +19,9 @@ namespace QboImporterTool.Classes
         public VendorImportPackage(string fileName)
             : base(fileName, new VendorMapper(), ImportableTypes.Vendor)
         {
-
+           
         }
+
     }
 
     internal class VendorMapper : IRowToRequestMapper<SaveQuickBooksOnlineVendorRequest, QuickBooksOnlineVendorResponse>

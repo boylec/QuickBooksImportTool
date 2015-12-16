@@ -32,11 +32,21 @@ namespace QboImporterTool.Classes
             var altPhone = Utils.FormatPhone(row["Alt. Phone"].ToString());
 
             request.AltPhone = altPhone;
-            request.BillingAddress1 = row["Bill to 1"].ToString();
-            request.BillingAddress2 = row["Bill to 2"].ToString();
-            request.BillingAddress3 = row["Bill to 3"].ToString();
-            request.BillingAddress4 = row["Bill to 4"].ToString();
-            request.BillingAddress5 = row["Bill to 5"].ToString();
+            if (row["Bill to 1"].ToString() == row["Company"].ToString())
+            {
+                request.BillingAddress1 = row["Bill to 2"].ToString();
+                request.BillingAddress2 = row["Bill to 3"].ToString();
+                request.BillingAddress3 = row["Bill to 4"].ToString();
+                request.BillingAddress4 = row["Bill to 5"].ToString();
+            }
+            else
+            {
+                request.BillingAddress1 = row["Bill to 1"].ToString();
+                request.BillingAddress2 = row["Bill to 2"].ToString();
+                request.BillingAddress3 = row["Bill to 3"].ToString();
+                request.BillingAddress4 = row["Bill to 4"].ToString();
+                request.BillingAddress5 = row["Bill to 5"].ToString();
+            }
             request.CompanyName = row["Company"].ToString();
             request.ContactName = row["Primary Contact"].ToString();
             request.DisplayName = customerName;

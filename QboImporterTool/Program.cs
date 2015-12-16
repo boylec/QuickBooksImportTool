@@ -64,7 +64,25 @@ namespace QboImporterTool
         internal static List<QuickBooksOnlineInvoiceResponse> CurrentInvoices = new List<QuickBooksOnlineInvoiceResponse>();
         internal static List<QuickBooksOnlinePreferencesResponse> CurrentPreferences = new List<QuickBooksOnlinePreferencesResponse>();
         internal static List<QuickBooksOnlineBillResponse> CurrentBills = new List<QuickBooksOnlineBillResponse>();
-        internal static List<QuickBooksOnlineBillPaymentResponse> CurrentBillPayments = new List<QuickBooksOnlineBillPaymentResponse>(); 
+        internal static List<QuickBooksOnlineBillPaymentResponse> CurrentBillPayments = new List<QuickBooksOnlineBillPaymentResponse>();
+
+        private static List<IImporter> ImporterList
+        {
+            get
+            {
+                return new List<IImporter>()
+                {
+                    new CustomerImportPackage("customers.xlsx"),
+                    new VendorImportPackage("vendors.xlsx"),
+                    new AccountImportPackage("accounts.xlsx"),
+                    new EmployeeImportPackage("employees.xlsx"),
+                    new ItemImportPackage("items.xlsx"),
+                    new InvoiceImportPackage("invoices.xlsx"),
+                    new BillImportPackage("bills.xlsx"),
+                    new TermImportPackage("terms.xlsx")
+                };
+            }
+        }
 
         private static void RefreshQboData()
         {
@@ -83,18 +101,6 @@ namespace QboImporterTool
         {
             Logger.Instance.Log("Program Began");
             Console.SetWindowSize(170,45);
-            var importerList = new List<IImporter>()
-            {
-                new CustomerImportPackage("customers.xlsx"),
-                new VendorImportPackage("vendors.xlsx"),
-                new AccountImportPackage("accounts.xlsx"),
-                new EmployeeImportPackage("employees.xlsx"),
-                new ItemImportPackage("items.xlsx"),
-                new InvoiceImportPackage("invoices.xlsx"),
-                new BillImportPackage("bills.xlsx"),
-                new TermImportPackage("terms.xlsx")
-            };
-
 
             while (true)
             {
@@ -102,7 +108,7 @@ namespace QboImporterTool
                 ListOfBatchItemRequests.Clear();
                 var typeToImport = ShowMainMenu();
                 
-                var packageSelected = importerList.Find(x => x.ImportType == typeToImport);
+                var packageSelected = ImporterList.Find(x => x.ImportType == typeToImport);
                 packageSelected.ExtractRequestsFromRows();
                 packageSelected.SendPayloadToQbo();
             }
