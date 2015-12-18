@@ -26,32 +26,28 @@ namespace QboImporterTool.Classes
     {
         public SaveQuickBooksOnlineEmployeeRequest AddMappingsToBaseRequest(DataRow row, SaveQuickBooksOnlineEmployeeRequest employeeRequest)
         {
-            var employeeName = row["Employee"].ToString();
-            var spaceIndex = employeeName.IndexOf(" ", StringComparison.Ordinal);
-            var employeeFirstName = employeeName.Substring(0, spaceIndex).Trim();
-            var employeeLastName = employeeName.Substring(spaceIndex).Trim();
-
-            employeeRequest.FirstName = employeeFirstName;
-            employeeRequest.LastName = employeeLastName;
-            employeeRequest.Email = row["Main Email"].ToString();
-            employeeRequest.Address = row["Address"].ToString();
+            employeeRequest.FirstName = row["First Name"].ToString();
+            employeeRequest.LastName = row["Last Name"].ToString();
+            employeeRequest.MiddleInitial = row["M.I."].ToString();
+            employeeRequest.Gender = row["Gender"].ToString();
+            employeeRequest.Street1 = row["Street1"].ToString();
+            employeeRequest.Street2 = row["Street2"].ToString();
             employeeRequest.City = row["City"].ToString();
             employeeRequest.DateOfBirth = DateTime.Parse(row["Date of Birth"].ToString());
-            employeeRequest.MainPhone = Utils.FormatPhone(row["Main Phone"].ToString());
+            employeeRequest.MainPhone = Utils.FormatPhone(row["Main Phone"].ToString().Replace(".", "-").Replace("/", "-"));
             employeeRequest.SSNumber = row["SS No."].ToString();
             employeeRequest.State = row["State"].ToString();
             employeeRequest.Zip = row["Zip"].ToString();
+            employeeRequest.HireDate = Convert.ToDateTime(row["Hire Date"].ToString());
             return employeeRequest;
         }
 
         public QuickBooksOnlineEmployeeResponse GetExistingFromRow(DataRow row)
         {
-            var employeeName = row["Employee"].ToString();
-            var spaceIndex = employeeName.IndexOf(" ", StringComparison.Ordinal);
-            var employeeFirstName = employeeName.Substring(0, spaceIndex).Trim();
-            var employeeLastName = employeeName.Substring(spaceIndex).Trim();
-
-            return Program.CurrentEmployees.Find(x => x.FirstName == employeeFirstName && x.LastName == employeeLastName);
+            var employeeFirstName = row["First Name"].ToString();
+            var employeeLastName = row["Last Name"].ToString();
+            var employeeMiddleName = !(row["M.I."] is DBNull) ? row["M.I."].ToString() : null;
+            return Program.CurrentEmployees.Find(x => x.FirstName == employeeFirstName && x.LastName == employeeLastName && x.MiddleInitial == employeeMiddleName);
         }
     }
 }

@@ -29,14 +29,14 @@ namespace QboImporterTool
 {
     public enum ImportableTypes
     {
-        Customer = 1,
-        Vendor,
+        Term = 1,
         Account,
-        Employee,
         Item,
+        Customer,
+        Vendor,
+        Employee,
         Invoice,
         Bill,
-        Term
     }
 
     public enum RefreshableTypes
@@ -100,7 +100,7 @@ namespace QboImporterTool
         private static void Main(string[] args)
         {
             Logger.Instance.Log("Program Began");
-            Console.SetWindowSize(170,45);
+            //Console.SetWindowSize(170,45);
 
             while (true)
             {

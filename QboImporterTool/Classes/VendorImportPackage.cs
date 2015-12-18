@@ -40,16 +40,21 @@ namespace QboImporterTool.Classes
             vendorRequest.OpeningBalance = 0;//Convert.ToDecimal(row["Balance"]);
             vendorRequest.OpeningBalanceDate = null;//DateTime.Now;
             vendorRequest.CompanyName = row["Company"].ToString();
-            vendorRequest.BillFrom1 = row["Bill from 1"].ToString();
-            vendorRequest.BillFrom2 = row["Bill from 2"].ToString();
-            vendorRequest.BillFrom3 = row["Bill from 3"].ToString();
-            vendorRequest.BillFrom4 = row["Bill from 4"].ToString();
-            vendorRequest.BillFrom5 = row["Bill from 5"].ToString();
+            vendorRequest.BillFrom1 = row["Bill from Street 1"].ToString();
+            vendorRequest.BillFrom2 = row["Bill from Street 2"].ToString();
+            vendorRequest.BillCity = row["Bill from City"].ToString();
+            vendorRequest.BillState = row["Bill from State"].ToString();
+            vendorRequest.BillZip = row["Bill from Zip"].ToString();
             vendorRequest.PrimaryContact = row["Primary Contact"].ToString();
-            vendorRequest.MainPhone = Utils.FormatPhone(row["Main Phone"].ToString());
-            vendorRequest.Fax = row["Fax"].ToString().Replace("/", "-");
-            vendorRequest.AltPhone = Utils.FormatPhone(row["Alt. Phone"].ToString());
+            vendorRequest.MainPhone = Utils.FormatPhone(row["Main Phone"].ToString().Replace(".","-").Replace("/","-"));
+            vendorRequest.Fax = row["Fax"].ToString().Replace(".", "-").Replace("/", "-");
+            vendorRequest.AltPhone = Utils.FormatPhone(row["Alt. Phone"].ToString().Replace(".", "-").Replace("/", "-"));
             vendorRequest.SecondaryContact = row["Secondary Contact"].ToString();
+            vendorRequest.TaxId = !(row["Tax ID"] is DBNull) ? row["Tax ID"].ToString() : null;
+            vendorRequest.Vendor1099 = !string.IsNullOrEmpty(vendorRequest.TaxId);
+            vendorRequest.TermsId = !(row["Terms"] is DBNull)
+                ? Program.CurrentTerms.Find(x => x.TermName == row["Terms"].ToString()).EntityId
+                : null;
             return vendorRequest;
         }
 

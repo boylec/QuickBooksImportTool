@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using DLI.Core.Common.Requests.QuickBooksOnline;
 using DLI.Core.Common.Responses.QuickBooksOnline;
 using QboImporterTool.Classes.Bases;
@@ -34,7 +35,7 @@ namespace QboImporterTool.Classes
         public QuickBooksOnlineTermResponse GetExistingFromRow(DataRow row)
         {
             var termName = row["Term"].ToString();
-            return Program.CurrentTerms.Find(x => x.TermName == termName.ToString());
+            return Program.CurrentTerms.Find(x => x.TermName.Equals(termName.ToString(),StringComparison.CurrentCultureIgnoreCase));
         }
     }
 }

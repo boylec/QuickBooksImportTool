@@ -224,6 +224,7 @@ namespace QboImporterTool.Classes
             //var isDiscountItem = (request.Description!= null && request.Description.StartsWith("Discount", StringComparison.CurrentCultureIgnoreCase));
             request.ItemCategoryType = ItemCategoryType.Service;
             request.ItemType = ItemType.Service;
+            request.Taxable = !(row["Sales Tax Code"] is DBNull) && row["Sales Tax Code"].ToString() == "Tax";
             request.Name = itemInfo.ItemName;
             request.IsSubItem = itemInfo.IsSubItem;
             if (request.IsSubItem)

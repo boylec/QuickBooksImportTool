@@ -28,30 +28,20 @@ namespace QboImporterTool.Classes
             SaveQuickBooksOnlineCustomerRequest request)
         {
             var customerName = row["Customer"].ToString();
-            var mainPhone = Utils.FormatPhone(row["Main Phone"].ToString());
-            var altPhone = Utils.FormatPhone(row["Alt. Phone"].ToString());
+            var mainPhone = Utils.FormatPhone(row["Main Phone"].ToString().Replace(".", "-").Replace("/", "-"));
+            var altPhone = Utils.FormatPhone(row["Alt. Phone"].ToString().Replace(".", "-").Replace("/", "-"));
 
             request.AltPhone = altPhone;
-            if (row["Bill to 1"].ToString() == row["Company"].ToString())
-            {
-                request.BillingAddress1 = row["Bill to 2"].ToString();
-                request.BillingAddress2 = row["Bill to 3"].ToString();
-                request.BillingAddress3 = row["Bill to 4"].ToString();
-                request.BillingAddress4 = row["Bill to 5"].ToString();
-            }
-            else
-            {
-                request.BillingAddress1 = row["Bill to 1"].ToString();
-                request.BillingAddress2 = row["Bill to 2"].ToString();
-                request.BillingAddress3 = row["Bill to 3"].ToString();
-                request.BillingAddress4 = row["Bill to 4"].ToString();
-                request.BillingAddress5 = row["Bill to 5"].ToString();
-            }
+            request.BillingAddress1 = row["Street1"].ToString();
+            request.BillingAddress2 = row["Street2"].ToString();
+            request.BillingCity = row["City"].ToString();
+            request.BillingState = row["State"].ToString();
+            request.BillingZip = row["Zip"].ToString();
             request.CompanyName = row["Company"].ToString();
             request.ContactName = row["Primary Contact"].ToString();
             request.DisplayName = customerName;
             request.Email = row["Main Email"].ToString();
-            request.FaxNumber = row["Fax"].ToString();
+            request.FaxNumber = row["Fax"].ToString().Replace(".", "-").Replace("/", "-");
             request.Organization = true;
             request.TelephoneNumber = mainPhone;
             request.OpeningBalance = 0;//Convert.ToDecimal(row["Balance Total"]);
